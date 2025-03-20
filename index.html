@@ -3,40 +3,45 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Abstract Clicker Game</title>
+  <title>Enhanced Clicker Game</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div id="main-menu">
-    <h1>Abstract Clicker Game</h1>
+    <h1>Enhanced Clicker Game</h1>
     <button onclick="startGame()">Start Game</button>
   </div>
 
   <div id="game-screen" style="display:none;">
-    <div id="stats">
-      <div id="level">Level: 1</div>
-      <div id="rebirths">Rebirths: 0</div>
-      <div id="points">Points: 0</div>
-    </div>
-
-    <!-- Abstract clickable area for interaction -->
+    <div id="level">Level: 1</div>
+    <div id="rebirths">Rebirths: 0</div>
+    <div id="points">Points: 0</div>
+    <!-- Replaced Click Button with Engaging Animated Icon -->
     <div id="clickable-area" onclick="addPoint()"></div>
-
     <div id="progress-bar">
       <div id="progress"></div>
     </div>
 
     <div id="shop">
       <h2>Shop</h2>
-      <button onclick="buyUpgrade(0)">Upgrade 1 (<span id="upgrade-cost-0">10</span>)</button>
-      <button onclick="buyUpgrade(1)">Upgrade 2 (<span id="upgrade-cost-1">20</span>)</button>
-      <button onclick="buyUpgrade(2)">Upgrade 3 (<span id="upgrade-cost-2">50</span>)</button>
-      <button onclick="buyAutoClicker()">Auto-Clicker (Cost: 100)</button>
+      <button onclick="buyUpgrade(0)">Upgrade 1 (<span id="upgrade-cost-0">10</span> Points)</button>
+      <button onclick="buyUpgrade(1)">Upgrade 2 (<span id="upgrade-cost-1">20</span> Points)</button>
+      <button onclick="buyUpgrade(2)">Upgrade 3 (<span id="upgrade-cost-2">50</span> Points)</button>
     </div>
 
     <div id="rebirth-section">
       <h2>Rebirth</h2>
-      <button onclick="rebirth()">Rebirth (<span id="rebirth-cost">100</span>)</button>
+      <button onclick="rebirth()">Rebirth (<span id="rebirth-cost">100</span> Points)</button>
+    </div>
+
+    <div id="leaderboard">
+      <h2>Leaderboard</h2>
+      <ul id="leaderboard-list"></ul>
+    </div>
+
+    <div id="daily-reward-section">
+      <h2>Daily Reward</h2>
+      <button onclick="giveDailyReward()">Claim Reward</button>
     </div>
 
     <div id="achievement-log">
@@ -44,13 +49,19 @@
       <ul id="achievements-list"></ul>
     </div>
 
-    <div id="leaderboard">
-      <h2>Your Leaderboard</h2>
-      <ul id="leaderboard-list"></ul>
-    </div>
-
     <div id="notification-log"></div>
   </div>
+
+  <div id="settings-menu">
+    <h2>Settings</h2>
+    <button onclick="toggleSound()">Toggle Sound</button>
+    <button onclick="changeBackground()">Change Background</button>
+  </div>
+
+  <!-- Background Music -->
+  <audio id="bg-music" loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-energy.mp3" type="audio/mp3">
+  </audio>
 
   <script src="scripts.js"></script>
 </body>
