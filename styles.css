@@ -1,3 +1,4 @@
+/* Body Styling */
 body {
   font-family: 'Poppins', sans-serif;
   text-align: center;
@@ -7,6 +8,7 @@ body {
   padding: 0;
 }
 
+/* Title and Headers */
 h1, h2 {
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
@@ -19,6 +21,7 @@ h2 {
   font-size: 1.8em;
 }
 
+/* Buttons Styling */
 button {
   padding: 15px 30px;
   font-size: 1.2em;
@@ -36,6 +39,7 @@ button:hover {
   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4);
 }
 
+/* Clickable Area */
 #clickable-area {
   width: 150px;
   height: 150px;
@@ -53,6 +57,7 @@ button:hover {
   100% { transform: scale(1); }
 }
 
+/* Progress Bar */
 #progress-bar {
   width: 80%;
   margin: 20px auto;
@@ -69,6 +74,7 @@ button:hover {
   transition: width 0.3s ease;
 }
 
+/* Notification Log */
 #notification-log {
   margin-top: 20px;
   padding: 15px;
@@ -77,7 +83,65 @@ button:hover {
   color: #fff;
 }
 
+/* Achievements and Leaderboard Lists */
 #achievements-list, #leaderboard-list {
   list-style: none;
   padding: 0;
+}
+
+/* Settings Button */
+#settings {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+#settings-button {
+  font-size: 1.5em;
+  padding: 10px;
+  border: none;
+  border-radius: 50%;
+  background: linear-gradient(to right, #43cea2, #185a9d);
+  color: white;
+  cursor: pointer;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+#settings-button:hover {
+  transform: scale(1.1);
+}
+
+/* Settings Menu Popup */
+#settings-menu {
+  position: fixed;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+  color: white;
+  z-index: 1000;
+  text-align: center;
+}
+
+#settings-menu h2 {
+  margin-bottom: 15px;
+}
+
+#settings-menu button {
+  padding: 10px 20px;
+  font-size: 1em;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(to right, #ff7e5f, #feb47b);
+  color: white;
+  margin: 5px;
+  cursor: pointer;
+}
+
+#settings-menu button:hover {
+  background: linear-gradient(to right, #feb47b, #ff7e5f);
 }
