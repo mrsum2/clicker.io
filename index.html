@@ -13,13 +13,27 @@
   </div>
 
   <div id="game-screen" style="display:none;">
+    <!-- Settings Button -->
+    <div id="settings">
+      <button id="settings-button" onclick="toggleSettingsMenu()">⚙️</button>
+    </div>
+
+    <!-- Settings Menu Popup -->
+    <div id="settings-menu" style="display: none;">
+      <h2>Settings</h2>
+      <button onclick="toggleSound()">Toggle Sound</button>
+      <button onclick="changeBackground()">Change Background</button>
+      <button onclick="giveDailyReward()">Claim Daily Reward</button>
+      <button onclick="toggleSettingsMenu()">Close</button>
+    </div>
+
     <div id="stats">
       <div id="level">Level: 1</div>
       <div id="rebirths">Rebirths: 0</div>
       <div id="points">Points: 0</div>
     </div>
 
-    <!-- Cool clickable area with abstract design -->
+    <!-- Abstract clickable area -->
     <div id="clickable-area" onclick="addPoint()"></div>
 
     <div id="progress-bar">
