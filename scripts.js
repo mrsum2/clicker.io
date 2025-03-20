@@ -21,7 +21,7 @@ function addPoint() {
 
 function levelUp() {
   level++;
-  alert("Level up! Get ready for a challenge.");
+  showNotification(`Level up! You reached level ${level}.`);
   updateUI();
 }
 
@@ -30,10 +30,10 @@ function buyUpgrade(index) {
     points -= upgradeCosts[index];
     pointsPerClick += upgradeEffects[index];
     upgradeCosts[index] *= 2;
+    showNotification(`Upgrade ${index + 1} purchased!`);
     updateUI();
-    alert(`Upgrade ${index + 1} purchased!`);
   } else {
-    alert("Not enough points!");
+    showNotification(`Not enough points to purchase Upgrade ${index + 1}!`);
   }
 }
 
@@ -43,16 +43,16 @@ function rebirth() {
     points = 0;
     pointsPerClick += 5;
     rebirthCost *= 2;
-    alert("Rebirth successful!");
+    showNotification(`Rebirth successful! Points per click permanently boosted.`);
     updateUI();
   } else {
-    alert("Not enough points to rebirth!");
+    showNotification(`You need ${rebirthCost} points to rebirth!`);
   }
 }
 
 function toggleSound() {
   soundOn = !soundOn;
-  alert(`Sound is now ${soundOn ? "ON" : "OFF"}`);
+  showNotification(`Sound is now ${soundOn ? "ON" : "OFF"}.`);
 }
 
 function changeBackground() {
@@ -65,6 +65,7 @@ function changeBackground() {
   ];
   const randomGradient = colors[Math.floor(Math.random() * colors.length)];
   document.body.style.background = `linear-gradient(to right, ${randomGradient})`;
+  showNotification(`Background changed!`);
 }
 
 function updateUI() {
@@ -84,3 +85,21 @@ function playClickSound() {
     console.error("Sound playback failed:", error);
   });
 }
+
+// Notification Function
+function showNotification(message) {
+  const log = document.getElementById("notification-log");
+
+  // Create a new notification
+  const notification = document.createElement("p");
+  notification.innerText = message;
+
+  // Add the notification to the log
+  log.appendChild(notification);
+
+  // Remove the notification after animation completes
+  setTimeout(() => {
+    notification.remove();
+  }, 3000); // Matches fadeInOut animation duration
+}
+
