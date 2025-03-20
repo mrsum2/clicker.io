@@ -13,6 +13,7 @@ let autoClickerActive = false;
 function startGame() {
   document.getElementById("main-menu").style.display = "none";
   document.getElementById("game-screen").style.display = "block";
+  loadGame(); // Load saved data (if any) when the game starts
 }
 
 // Adds points when the clickable area is clicked
@@ -86,7 +87,7 @@ function checkAchievements() {
   }
 }
 
-// Updates the game UI with the latest stats
+// Updates the game UI with the latest stats and saves progress
 function updateUI() {
   document.getElementById("points").innerText = `Points: ${points}`;
   document.getElementById("level").innerText = `Level: ${level}`;
@@ -95,6 +96,69 @@ function updateUI() {
     document.getElementById(`upgrade-cost-${index}`).innerText = cost;
   });
   document.getElementById("progress").style.width = `${(points / (level * 50)) * 100}%`;
+  saveGame(); // Auto-save after every UI update
+}
+
+// Saves the current game state to local storage
+function saveGame() {
+  const gameData = {
+    points,
+    pointsPerClick,
+    level,
+    rebirths,
+    upgradeCosts,
+    rebirthCost,
+    autoClickerActive,
+    achievements,
+  };
+  localStorage.setItem("clickerGameSave", JSON.stringify(gameData));
+  console.log("Game progress saved.");
+}
+
+// Loads the game state from local storage (if available)
+function loadGame() {
+  const savedData = JSON.parse(localStorage.getItem("clickerGameSave"));
+  if (savedData) {
+    points = savedData.points;
+    pointsPerClick = savedData.pointsPerClick;
+    level = savedData.level;
+    rebirths = savedData.rebirths;
+    savedData.upgradeCosts.forEach((cost, index) => {
+      upgradeCosts[index] = cost;
+    });
+    rebirthCost = savedData.rebirthCost;
+    autoClickerActive = savedData.autoClickerActive;
+    achievements = savedData.achievements;
+
+    // Restore achievements visually
+    const achievementsList = document.getElementById("achievements-list");
+    achievementsList.innerHTML = ""; // Clear existing achievements
+    achievements.forEach((achievement) => {
+      const achievementItem = document.createElement("li");
+      achievementItem.innerText = achievement;
+      achievementsList.appendChild(achievementItem);
+    });
+
+    updateUI();
+    console.log("Game progress loaded.");
+  }
+}
+
+// Resets the game progress
+function resetProgress() {
+  if (confirm("Are you sure you want to reset all progress?")) {
+    localStorage.removeItem("clickerGameSave"); // Clear saved data
+    points = 0;
+    pointsPerClick = 1;
+    level = 1;
+    rebirths = 0;
+    achievements = [];
+    leaderboard = [];
+    rebirthCost = 100;
+    autoClickerActive = false;
+    updateUI(); // Reset UI
+    showNotification("Progress has been reset.");
+  }
 }
 
 // Plays a click sound when the clickable area is clicked
@@ -130,14 +194,6 @@ function changeBackground() {
   const randomGradient = colors[Math.floor(Math.random() * colors.length)];
   document.body.style.background = `linear-gradient(to right, ${randomGradient})`;
   showNotification("Background changed!");
-}
-
-// Gives the player a daily reward
-function giveDailyReward() {
-  const rewardPoints = 50;
-  points += rewardPoints;
-  showNotification(`Daily Reward Claimed! +${rewardPoints} Points.`);
-  updateUI();
 }
 
 // Toggles the visibility of the settings menu
