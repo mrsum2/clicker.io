@@ -83,12 +83,6 @@ button:hover {
   color: #fff;
 }
 
-/* Achievements and Leaderboard Lists */
-#achievements-list, #leaderboard-list {
-  list-style: none;
-  padding: 0;
-}
-
 /* Settings Button */
 #settings {
   position: absolute;
@@ -114,6 +108,7 @@ button:hover {
 
 /* Settings Menu Popup */
 #settings-menu {
+  display: none;
   position: fixed;
   top: 50px;
   left: 50%;
