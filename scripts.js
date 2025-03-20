@@ -44,7 +44,7 @@ function buyUpgrade(index) {
   }
 }
 
-// Activates an auto-clicker to generate points automatically
+// Activates an auto-clicker to generate points
 function buyAutoClicker() {
   if (points >= 100 && !autoClickerActive) {
     points -= 100;
@@ -52,7 +52,7 @@ function buyAutoClicker() {
     setInterval(() => {
       points += 1;
       updateUI();
-    }, 1000);
+    }, 1000); // Adds 1 point every second
     showNotification("Auto-Clicker Activated!");
   } else if (autoClickerActive) {
     showNotification("Auto-Clicker is already active!");
@@ -143,7 +143,7 @@ function giveDailyReward() {
 // Toggles the visibility of the settings menu
 function toggleSettingsMenu() {
   const settingsMenu = document.getElementById("settings-menu");
-  if (settingsMenu.style.display === "none") {
+  if (settingsMenu.style.display === "none" || settingsMenu.style.display === "") {
     settingsMenu.style.display = "block";
   } else {
     settingsMenu.style.display = "none";
