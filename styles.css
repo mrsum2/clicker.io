@@ -1,77 +1,24 @@
-body {
-  font-family: 'Poppins', sans-serif;
-  text-align: center;
-  background: linear-gradient(120deg, #1e3c72, #2a5298);
-  color: #ffffff;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-}
-
-h1, h2 {
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-}
-
-h1 {
-  font-size: 3em;
-  margin: 20px 0;
-}
-
-h2 {
-  font-size: 1.8em;
-  margin: 15px 0;
-}
-
-button {
-  padding: 15px 30px;
+#notification-log {
+  margin-top: 20px;
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  color: #fff;
   font-size: 1.2em;
-  border: none;
-  border-radius: 25px;
-  background: linear-gradient(to right, #ff7e5f, #feb47b);
-  color: white;
-  cursor: pointer;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-button:hover {
-  transform: scale(1.1);
-  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4);
+#notification-log p {
+  margin: 5px 0;
+  animation: fadeInOut 3s ease forwards;
 }
 
-#click-button {
-  margin: 20px 0;
-  font-size: 1.5em;
-  background: linear-gradient(to right, #43cea2, #185a9d);
-}
-
-#level, #rebirths, #points {
-  font-size: 1.5em;
-  margin: 15px 0;
-  padding: 10px;
-  border-radius: 15px;
-  background: rgba(0, 0, 0, 0.2);
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-#progress-bar {
-  width: 80%;
-  margin: 20px auto;
-  height: 30px;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 15px;
-  overflow: hidden;
-}
-
-#progress {
-  height: 100%;
-  width: 0;
-  background: linear-gradient(to right, #ff512f, #dd2476);
-  transition: width 0.3s ease;
-}
-
-#settings-menu {
-  position: fixed;
-  bottom: 10px;
-  left: 10px;
+@keyframes fadeInOut {
+  0% { opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; }
 }
